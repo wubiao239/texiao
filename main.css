@@ -1,11 +1,8 @@
 body{
 	background-color: #f3f3f3;
 }
-.flex-center{
-	max-width:1200px;
-	margin:0 auto;
-}
 
+.flexslider {width:1200px;margin:0 auto;background: #f3f3f3; border: none; }
 .flex-control-paging li a{
 	background: #ff7271;
 	background: rgba(197,197,197,1);
@@ -13,10 +10,11 @@ body{
 .flex-control-paging li a:hover { background: #ff7271; background: rgba(255,114,113,1); }
 .flex-control-paging li a.flex-active { background: #ff7271; background: rgba(255,114,113,1);cursor: default; }
 
-.flex-direction-nav .flex-prev {left: -50px;background-position:0 0;}
-.flex-direction-nav .flex-next { right: -50px; background-position:-132px 0}
+/*.flex-direction-nav .flex-prev {left: -50px;}
+.flex-direction-nav .flex-next { right: -50px; }*/
 
-.flexslider { margin:0; background: #f3f3f3; border: none; }
 
-.flex-direction-nav .flex-prev { left: -150px; background-position:0 0 }
-.flex-direction-nav .flex-next { right: -150px; background-position:-132px 0}
+
+.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(images/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; -webkit-transition: all .3s ease; z-index: 10;}
+
+.flex-control-paging li a {width: 8px;height: 8px;}
