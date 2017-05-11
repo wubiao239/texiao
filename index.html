@@ -11,24 +11,15 @@
 <script type="text/javascript">
 $(function() {
     $(".flexslider").flexslider({
-    //   animation: "slide",
-		  // slideshowSpeed: 40000, 
-		  // animationSpeed: 4000, 
-    //   slideDirection: "horizontal",
+      animation: "slide",
+		 minItems: 1,
+    maxItems: 3,
+
       itemWidth: 380,
-      itemMargin: 20,
-		  // touch: true,
-    //   animationLoop:false
-    //   
-    animation: 'slide',
-        // pauseOnAction: false,
-         pauseOnHover: true,
-        // multipleKeyboard: true,
-        // mousewheel: true,
-        //reverse :true
-        //directionNav: false,
-        //smoothHeight: true
-        //randomize: true
+      itemMargin:20,
+		 
+      animation: 'slide',
+      //animationLoop: false,
   
 	});
 });	
@@ -40,14 +31,16 @@ $(function() {
 
 <div id="main">
    <div class="flex-center">
-    <div class="flexslider">
+    <div class="flexslider carousel">
       <ul class="slides">
-        <li><img src="images/p1.jpg" /></li>
-        <li><img src="images/p2.jpg" /></li>
-        <li><img src="images/p3.jpg" /></li>
-        <li><img src="images/p4.jpg" /></li>
-        <li><img src="images/p5.jpg" /></li>
-        <li><img src="images/p6.jpg" /></li>
+       
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+        <li><a href="#"><img src="images/p2.jpg" /> <p class="flex-caption">Adventurer Cheesecake Brownie1</p></a></li>
+       
          
       </ul>
     </div>

@@ -10,11 +10,10 @@ body{
 .flex-control-paging li a:hover { background: #ff7271; background: rgba(255,114,113,1); }
 .flex-control-paging li a.flex-active { background: #ff7271; background: rgba(255,114,113,1);cursor: default; }
 
-/*.flex-direction-nav .flex-prev {left: -50px;}
-.flex-direction-nav .flex-next { right: -50px; }*/
+.flex-direction-nav .flex-prev {left: -50px; opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat 0 0;}
+.flex-direction-nav .flex-next { right: -50px;  opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat -30px 0;}
+.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block;  position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; -webkit-transition: all .3s ease; z-index: 10;}
 
 
-
-.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(images/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; -webkit-transition: all .3s ease; z-index: 10;}
 
 .flex-control-paging li a {width: 8px;height: 8px;}
