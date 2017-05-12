@@ -2,18 +2,39 @@ body{
 	background-color: #f3f3f3;
 }
 
-.flexslider {width:1200px;margin:0 auto;background: #f3f3f3; border: none; }
+.flexslider {background: #f3f3f3; border: none; }
 .flex-control-paging li a{
 	background: #ff7271;
 	background: rgba(197,197,197,1);
 }
 .flex-control-paging li a:hover { background: #ff7271; background: rgba(255,114,113,1); }
 .flex-control-paging li a.flex-active { background: #ff7271; background: rgba(255,114,113,1);cursor: default; }
-
-.flex-direction-nav .flex-prev {left: -50px; opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat 0 0;}
-.flex-direction-nav .flex-next { right: -50px;  opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat -30px 0;}
-.flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block;  position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; -webkit-transition: all .3s ease; z-index: 10;}
-
-
-
 .flex-control-paging li a {width: 8px;height: 8px;}
+
+.flex-center{max-width:1200px;margin:0 auto;}
+.flex-center .flex-direction-nav .flex-prev {left: -50px; opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat 0 0;}
+.flex-center .flex-direction-nav .flex-next { right: -50px;  opacity: 1;text-indent: 1999px;background: url(images/bg_direction_nav.png) no-repeat -30px 0;}
+.flex-center .flex-direction-nav a {width: 30px; height: 30px;  display: block;  position: absolute; top: 50%; cursor: pointer; text-indent: -9999px; z-index: 10;}
+
+.flex-center .flex-caption{color:#575c67;text-align: center;height:97px;background-color: #fff;line-height: 97px;margin-top: 1px;}
+.flex-center .flexslider .slides li a{text-decoration: none;}
+.flex-center .flexslider .slides li a:hover .flex-caption{color:#ff7271;}
+.flex-center .flexslider .slides li a:visited .flex-caption{color:#ff7271;}
+
+
+
+.flex-banner .flex-caption{width:30%;background-color:#ecf2fa;padding:20px 30px;position:absolute;top:20%;right:10%}
+.flex-banner .flex-caption h3{color:#383e47;}
+.flex-banner .flex-caption p{color:#757e89;}
+.flex-banner .flexslider .slides li a{text-decoration: none;}
+
+.flex-banner .flex-control-nav{position: absolute;left: 90%;top:60%;z-index: 15;text-align:left;width: 15px;}
+.flex-banner .flex-control-nav li {margin:  6px 0; display: block; } 
+@media screen and (max-width: 1300px) {
+  .flex-center .flex-direction-nav .flex-prev {
+    display: none;
+  }
+  .flex-center .flex-direction-nav .flex-next {
+   	display: none;
+  }
+}

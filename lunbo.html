@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>Document</title> 
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
+ </head> 
+<body> 
+<style type="text/css">
+*{ padding:0px; margin:0px;list-style:none;}
+.banner { width:100%; position:relative; overflow:hidden;zoom:1;}
+.banner .slides{position:relative;overflow:hidden;}
+.banner .slides:after {content: "\0020"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.banner .slides img{width:100%;}
+.banner .slides li{width:100%;float:left;margin-right:-100%;z-index: 1;opacity:0;}
+.banner .slides li:first-child{opacity:1;z-index: 2}
+.banner .num-nav { position:absolute;  right:10%;  font-size:0px;top:50%;}
+.banner .num-nav li { width:8px; height:8px; background-color:#888; border-radius:50%;display:block;margin:6px 0px; cursor:pointer;}
+.banner .num-nav li.on {background-color: #ff6a00;}
+.banner .caption{width:30%;background-color:#ecf2fa;padding:20px 30px;position:absolute;top:20%;right:10%}
+.banner .caption h3{color:#383e47;}
+.banner .caption p{color:#757e89;}
+.banner .flexslider .slides li a{text-decoration: none;}
+</style> 
+  <script type="text/javascript">
+
+$(document).ready(function () {
+
+    var i = 0;
+
+    var size = $(".banner .slides li").size();
+    var width= $(".banner .slides li").width();
+
+    $(".banner .slides").after(" <ol class=\"num-nav\"> </ol> ");
+    for (var j = 0; j < size; j++) {
+        $(".banner .num-nav").append("<li></li>");
+    }
+
+    $(".banner .num-nav li").first().addClass("on");
+    $(".banner .slides li").eq(0).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
+
+    /*自动轮播*/
+
+    //var t = setInterval(function () { i++; show();},20000);
+
+    /*鼠标悬停事件*/
+
+    // $(".banner").hover(function () {
+    //     clearInterval(t);//鼠标悬停时清除定时器
+    // }, function () {
+    //     t = setInterval(function () { i++; show(); }, 20000); //鼠标移出时清除定时器
+    // });
+
+
+
+
+    /*鼠标点击事件*/
+
+    $(".banner .num-nav li").click(function () {
+
+        var index = $(this).index();//获取当前索引值
+        
+        i = index;
+        $(".banner .slides li").eq(index).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
+        $(this).addClass("on").siblings().removeClass("on");
+    });
+
+
+    // /*移动事件*/
+    // function show() {
+    //     if (i == size) {
+    //         $(".banner .slides").css({ "z-index": 1 });
+    //         i = 1;
+    //     }
+        
+
+    //     if (i == size - 1) {
+    //         $(".banner .num-nav li").eq(0).addClass("on").siblings().removeClass("on");
+    //     } else {
+    //         $(".banner .num-nav li").eq(i).addClass("on").siblings().removeClass("on");
+    //     }
+    // }
+});
+
+
+        </script> 
+  <div class="banner"> 
+   <ul class="slides"> 
+
+   <li><a href="#"><img src="imgs/banner_01.jpg" /> <div class="caption"><h3>Adventurer CheesecakeAdventurer </h3><p>Adventurer CheesecakeAdventurer CheesecakeAdventurer </p></div></a></li>
+         <li><a href="#"><img src="imgs/banner_02.jpg" /> <div class="caption"><h3>Adventurer CheesecakeAdventurer </h3><p>Adventurer CheesecakeAdventurer CheesecakeAdventurer </p></div></a></li>
+         <li><a href="#"><img src="imgs/banner_03.jpg" /> <div class="caption"><h3>Adventurer CheesecakeAdventurer </h3><p>Adventurer CheesecakeAdventurer CheesecakeAdventurer </p></div></a></li>
+         <li><a href="#"><img src="imgs/banner_04.jpg" /> <div class="caption"><h3>Adventurer CheesecakeAdventurer </h3><p>Adventurer CheesecakeAdventurer CheesecakeAdventurer </p></div></a></li>
+   </ul> 
+  
+   
+  </div>   
+</body>
+</html>
