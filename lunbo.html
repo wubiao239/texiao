@@ -50,7 +50,7 @@ body{background-color: #f3f3f3;}
 .pro-slider .slides li a:hover .pro-caption{color:#ff7271;}
 .pro-slider .slides li a:visited .pro-caption{color:#ff7271;}
 
-.pro-slider .finish{background-color: #ccc}
+.pro-slider .hide-nav{background-color: #ccc}
 @media screen and (max-width: 1440px) {
   .pro-slider .btn_r { right:50px;}
   .pro-slider .btn_l { left:50px;}
@@ -133,7 +133,7 @@ $(document).ready(function() {
         $(".pro-slider .num-nav").append("<li></li>");
       }
       $(".pro-slider .num-nav li").first().addClass("on");
-      isFinish();
+      hideNav();
       $(".pro-slider .slides").finish().animate({
         left: -i * sliderWidth
       },0);
@@ -149,7 +149,7 @@ $(document).ready(function() {
         },
         400);
         $(this).addClass("on").siblings().removeClass("on");
-        isFinish();
+        hideNav();
       });
 
       /*向左按钮*/
@@ -157,7 +157,7 @@ $(document).ready(function() {
 
         if (i > 0 && i <= (pages - 1)) {
           i--;
-          isFinish();
+          hideNav();
           move();
 
         }
@@ -168,7 +168,7 @@ $(document).ready(function() {
       $(".pro-slider .btn_r").click(function() {
         if (i >= 0 && i < (pages - 1)) {
           i++;
-          isFinish();
+          hideNav();
           move();
 
         }
@@ -180,17 +180,15 @@ $(document).ready(function() {
      
 
       if(sliderWidth > 776) {
-        console.log("init3->"+sliderWidth);
+        //console.log("init3->"+sliderWidth);
          init(3);
       } 
       else if(480 < sliderWidth&&sliderWidth <= 776) {
-        console.log("init2->"+sliderWidth);
+        //console.log("init2->"+sliderWidth);
         init(2);
-       
-
       } 
       else if(sliderWidth<= 680) {
-        console.log("init1->"+sliderWidth);
+        //console.log("init1->"+sliderWidth);
         init(1);
        
       }
@@ -199,14 +197,14 @@ $(document).ready(function() {
 
 
     /*判断左右导航状态*/
-    function isFinish() {
+    function hideNav() {
       if (i == pages - 1) {
-        $(".pro-slider .btn_r").addClass("finish");
-        $(".pro-slider .btn_l").removeClass("finish");
+        $(".pro-slider .btn_r").addClass("hide-nav");
+        $(".pro-slider .btn_l").removeClass("hide-nav");
       }
       if (i == 0) {
-        $(".pro-slider .btn_l").addClass("finish");
-        $(".pro-slider .btn_r").removeClass("finish");
+        $(".pro-slider .btn_l").addClass("hide-nav");
+        $(".pro-slider .btn_r").removeClass("hide-nav");
       }
     }
     /*移动事件*/
