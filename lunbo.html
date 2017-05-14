@@ -8,6 +8,7 @@
 <body> 
 <style type="text/css">
 *{ padding:0px; margin:0px;list-style:none;}
+body{background-color: #f3f3f3;}
 /**
  * start banner-slider
  */
@@ -176,23 +177,26 @@ $(document).ready(function() {
 
     function reset() {
       sliderWidth = $(".products-center").width();
-      if (sliderWidth > 776) {
-        init(3);
-      } else if (560 < sliderWidth <= 776) {
+     
 
+      if(sliderWidth > 776) {
+        console.log("init3->"+sliderWidth);
+         init(3);
+      } 
+      else if(480 < sliderWidth&&sliderWidth <= 776) {
+        console.log("init2->"+sliderWidth);
         init(2);
-      } else if (sliderWidth <= 560) {
+       
+
+      } 
+      else if(sliderWidth<= 680) {
+        console.log("init1->"+sliderWidth);
         init(1);
+       
       }
     }
 
-    isFinish();
 
-    $(window).resize(function() {
-
-      reset();
-
-    });
 
     /*判断左右导航状态*/
     function isFinish() {
@@ -215,6 +219,14 @@ $(document).ready(function() {
       $(".pro-slider .num-nav li").eq(i).addClass("on").siblings().removeClass("on");
 
     }
+
+
+
+    $(window).resize(function() {
+
+      reset();
+
+    });
 
   }
 
