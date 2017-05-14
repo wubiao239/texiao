@@ -8,83 +8,224 @@
 <body> 
 <style type="text/css">
 *{ padding:0px; margin:0px;list-style:none;}
-.banner { width:100%; position:relative; overflow:hidden;zoom:1;}
-.banner .slides{position:relative;overflow:hidden;}
-.banner .slides:after {content: "\0020"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-.banner .slides img{width:100%;}
-.banner .slides li{width:100%;float:left;margin-right:-100%;z-index: 1;opacity:0;}
-.banner .slides li:first-child{opacity:1;z-index: 2}
-.banner .num-nav { position:absolute;  right:10%;  font-size:0px;top:50%;}
-.banner .num-nav li { width:8px; height:8px; background-color:#888; border-radius:50%;display:block;margin:6px 0px; cursor:pointer;}
-.banner .num-nav li.on {background-color: #ff6a00;}
-.banner .caption{width:30%;background-color:#ecf2fa;padding:20px 30px;position:absolute;top:20%;right:10%}
-.banner .caption h3{color:#383e47;}
-.banner .caption p{color:#757e89;}
-.banner .flexslider .slides li a{text-decoration: none;}
+/**
+ * start banner-slider
+ */
+.banner-slider { width:100%; position:relative; overflow:hidden;zoom:1;}
+.banner-slider .slides{position:relative;overflow:hidden;}
+.banner-slider .slides:after {content: "\0020"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.banner-slider .slides img{width:100%;}
+.banner-slider .slides li{width:100%;float:left;margin-right:-100%;z-index: 1;opacity:0;}
+.banner-slider .slides li:first-child{opacity:1;z-index: 2}
+.banner-slider .num-nav { position:absolute;  right:10%;  font-size:0px;top:50%;}
+.banner-slider .num-nav li { width:8px; height:8px; background-color:#888; border-radius:50%;display:block;margin:6px 0px; cursor:pointer;}
+.banner-slider .num-nav li.on {background-color: #ff6a00;}
+.banner-slider .caption{width:30%;background-color:#ecf2fa;padding:20px 30px;position:absolute;top:20%;right:10%}
+.banner-slider .caption h3{color:#383e47;}
+.banner-slider .caption p{color:#757e89;}
+.banner-slider .flexslider .slides li a{text-decoration: none;}
+/**
+ * end banner-slider
+ */
+
+/**
+ * start pro-slider
+ */
+.products-center{max-width: 1200px;margin:0px auto;position:relative;}
+.pro-slider { width:100%; margin:60px 0; }
+.pro-slider .pro-view{overflow:hidden;width:100%;}
+.pro-slider .slides{width:1200%; position:relative;background-color: #0f0;}
+.pro-slider .slides img{width:100%;position:relative;vertical-align: middle;}
+.pro-slider .slides li{float:left;}
+.pro-slider .num-nav { position:absolute; width:100%; bottom:-40px; left:0px; text-align:center; font-size:0px;}
+.pro-slider .num-nav li { width:10px; height:10px; background-color:#888; border-radius:50%;display:inline-block;margin:0px 3px; cursor:pointer;}
+.pro-slider .num-nav li.on {background-color: #ff6a00;}
+.pro-slider .btn {width: 50px;height: 50px;background-color: #808080;opacity: 0.5; filter:alpha(opacity:0.5); position:absolute;top:40%; cursor:pointer; text-align:center; line-height:50px; font-size:40px; color:#fff; font-family:"宋体"; display:block; border-radius: 50%; -moz-border-radius: 50%; /* Firefox */ -webkit-border-radius: 50%; /* Safari 和 Chrome */ }
+.pro-slider .btn_l { left:-100px;}
+.pro-slider .btn_r { right:-100px;}
+
+.pro-slider .pro-caption{color:#575c67;text-align: center;height:97px;background-color: #fff;line-height: 97px;margin-top: 1px;}
+.pro-slider .slides li a{text-decoration: none; }
+.pro-slider .slides li a:hover .pro-caption{color:#ff7271;}
+.pro-slider .slides li a:visited .pro-caption{color:#ff7271;}
+
+.pro-slider .finish{background-color: #ccc}
+@media screen and (max-width: 1440px) {
+  .pro-slider .btn_r { right:50px;}
+  .pro-slider .btn_l { left:50px;}
+  .pro-slider .btn {width:30px;height:30px;line-height:30px; font-size:30px;  }
+}
+
+/**
+ * end pro-slider
+ */
 </style> 
   <script type="text/javascript">
 
 $(document).ready(function () {
+    function bannerSlider(){
+      var i = 0;
 
-    var i = 0;
+      var size = $(".banner-slider .slides li").size();
+      var width= $(".banner-slider .slides li").width();
 
-    var size = $(".banner .slides li").size();
-    var width= $(".banner .slides li").width();
+      $(".banner-slider .slides").after(" <ol class=\"num-nav\"> </ol> ");
+      for (var j = 0; j < size; j++) {
+          $(".banner-slider .num-nav").append("<li></li>");
+      }
 
-    $(".banner .slides").after(" <ol class=\"num-nav\"> </ol> ");
-    for (var j = 0; j < size; j++) {
-        $(".banner .num-nav").append("<li></li>");
+      $(".banner-slider .num-nav li").first().addClass("on");
+      $(".banner-slider .slides li").eq(0).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
+
+      /*鼠标点击事件*/
+
+      $(".banner-slider .num-nav li").click(function () {
+
+          var index = $(this).index();//获取当前索引值
+          
+          i = index;
+          $(".banner-slider .slides li").eq(index).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
+          $(this).addClass("on").siblings().removeClass("on");
+      });
     }
-
-    $(".banner .num-nav li").first().addClass("on");
-    $(".banner .slides li").eq(0).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
-
-    /*自动轮播*/
-
-    //var t = setInterval(function () { i++; show();},20000);
-
-    /*鼠标悬停事件*/
-
-    // $(".banner").hover(function () {
-    //     clearInterval(t);//鼠标悬停时清除定时器
-    // }, function () {
-    //     t = setInterval(function () { i++; show(); }, 20000); //鼠标移出时清除定时器
-    // });
-
-
-
-
-    /*鼠标点击事件*/
-
-    $(".banner .num-nav li").click(function () {
-
-        var index = $(this).index();//获取当前索引值
-        
-        i = index;
-        $(".banner .slides li").eq(index).animate({"z-index":"2","opacity":"1"},1000).siblings().animate({"z-index":"1","opacity":"0"},1000);
-        $(this).addClass("on").siblings().removeClass("on");
-    });
-
-
-    // /*移动事件*/
-    // function show() {
-    //     if (i == size) {
-    //         $(".banner .slides").css({ "z-index": 1 });
-    //         i = 1;
-    //     }
-        
-
-    //     if (i == size - 1) {
-    //         $(".banner .num-nav li").eq(0).addClass("on").siblings().removeClass("on");
-    //     } else {
-    //         $(".banner .num-nav li").eq(i).addClass("on").siblings().removeClass("on");
-    //     }
-    // }
+    bannerSlider();
+    
 });
 
 
+$(document).ready(function() {
+  function proSlider() {
+    var i = 0;
+    var size;
+    var sliderWidth;
+    var pages;
+    var width;
+    var marginLeft;
+    var mvWidth ;
+    reset();
+    function init(num) {
+      i = 0;
+      size = $(".pro-slider .slides li").size();
+      sliderWidth = $(".products-center").width();
+      pages = Math.ceil(size / num);
+      width = sliderWidth * ((1 - 0.025 * (num - 1)) / num);
+
+      if (num > 1) {
+        marginLeft = 0.025 * sliderWidth;
+      } else {
+        marginLeft = 0;
+      }
+
+      $(".pro-slider .slides li").width(width);
+      $(".pro-slider .slides li").css("margin-left", marginLeft);
+      $(".pro-slider .slides li:nth-child(" + num + "n+1)").css("margin-left", 0);
+      //$(".pro-slider .slides").finish().animate({ left: -i * sliderWidth }, 0);
+      if ($(".pro-slider .pro-view").size() == 0) {
+        $(".pro-slider .slides").wrap("<div class='pro-view'></div>");
+      }
+
+      $(".pro-slider .slides").siblings().remove();
+      //$('.pro-slider .pro-view').siblings().css('background-color', 'red');
+      $(".pro-slider .slides").after("<div class=\"btn btn_l\">&lt;</div> <div class=\"btn btn_r\">&gt;</div> ");
+      $(".pro-slider .slides").after("<ol class=\"num-nav\"> </ol> ");
+      for (var j = 0; j < pages; j++) {
+        $(".pro-slider .num-nav").append("<li></li>");
+      }
+      $(".pro-slider .num-nav li").first().addClass("on");
+      isFinish();
+      $(".pro-slider .slides").finish().animate({
+        left: -i * sliderWidth
+      },0);
+
+      /*鼠标点击事件*/
+
+      $(".pro-slider .num-nav li").click(function() {
+
+        var index = $(this).index(); //获取当前索引值
+        i = index;
+        $(".pro-slider .slides").finish().animate({
+          left: -index * sliderWidth
+        },
+        400);
+        $(this).addClass("on").siblings().removeClass("on");
+        isFinish();
+      });
+
+      /*向左按钮*/
+      $(".pro-slider .btn_l").click(function() {
+
+        if (i > 0 && i <= (pages - 1)) {
+          i--;
+          isFinish();
+          move();
+
+        }
+
+      })
+
+      /*向右按钮*/
+      $(".pro-slider .btn_r").click(function() {
+        if (i >= 0 && i < (pages - 1)) {
+          i++;
+          isFinish();
+          move();
+
+        }
+      })
+    }
+
+    function reset() {
+      sliderWidth = $(".products-center").width();
+      if (sliderWidth > 776) {
+        init(3);
+      } else if (560 < sliderWidth <= 776) {
+
+        init(2);
+      } else if (sliderWidth <= 560) {
+        init(1);
+      }
+    }
+
+    isFinish();
+
+    $(window).resize(function() {
+
+      reset();
+
+    });
+
+    /*判断左右导航状态*/
+    function isFinish() {
+      if (i == pages - 1) {
+        $(".pro-slider .btn_r").addClass("finish");
+        $(".pro-slider .btn_l").removeClass("finish");
+      }
+      if (i == 0) {
+        $(".pro-slider .btn_l").addClass("finish");
+        $(".pro-slider .btn_r").removeClass("finish");
+      }
+    }
+    /*移动事件*/
+    function move() {
+
+      $(".pro-slider .slides").finish().animate({
+        left: -i * sliderWidth
+      },
+      400);
+      $(".pro-slider .num-nav li").eq(i).addClass("on").siblings().removeClass("on");
+
+    }
+
+  }
+
+  proSlider();
+
+});
+
         </script> 
-  <div class="banner"> 
+
+
+  <div class="banner-slider"> 
    <ul class="slides"> 
 
    <li><a href="#"><img src="imgs/banner_01.jpg" /> <div class="caption"><h3>Adventurer CheesecakeAdventurer </h3><p>Adventurer CheesecakeAdventurer CheesecakeAdventurer </p></div></a></li>
@@ -94,6 +235,26 @@ $(document).ready(function () {
    </ul> 
   
    
-  </div>   
+  </div> 
+
+ <div class="products-center">
+            <div class="pro-slider"> 
+             <ul class="slides"> 
+                <li><a href="#"><img src="images/p1.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie1</div></a></li>
+                <li><a href="#"><img src="images/p2.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie2</div></a></li>
+                <li><a href="#"><img src="images/p3.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie3</div></a></li>
+                <li><a href="#"><img src="images/p4.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie4</div></a></li>
+                <li><a href="#"><img src="images/p5.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie5</div></a></li> 
+                <li><a href="#"><img src="images/p6.jpg" /> <div class="pro-caption">Adventurer Cheesecake Brownie6</div></a></li>
+
+                
+              
+             </ul> 
+              
+             
+            </div> 
+
+
+        </div>  
 </body>
 </html>
